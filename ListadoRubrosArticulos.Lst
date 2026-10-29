@@ -1,47 +1,47 @@
-Fecha : 28-10-2026
-Listado por Rubros y Articulos
-___________________________________________________________________________
+Fecha : 29-10-2026
+                              Listado por Rubros y Articulos
+________________________________________________________________________________________
 
 Cod.Rubro: R0001                Nombre Rubro: Lacteos y Quesos              
-Cod.Articulo      Descripcion                                                     Pre.Unit.
+Cod.Articulo    Descripcion                                                    Pre.Unit.
 A000101         Leche Entera 1L                                             $    1250.50
 A000102         Queso Cremoso 1kg                                           $    6500.00
 A000103         Yogur Frutilla 160g                                         $     620.00
 
 Cantidad de items:    3
-___________________________________________________________________________
+________________________________________________________________________________________
 
 Cod.Rubro: R0002                Nombre Rubro: Bebidas y Jugos               
-Cod.Articulo      Descripcion                                                     Pre.Unit.
+Cod.Articulo    Descripcion                                                    Pre.Unit.
 A000201         Agua Mineral 1.5L                                           $     850.00
 A000202         Gaseosa Cola 2.25L                                          $    2200.00
 A000203         Jugo de Naranja 1L                                          $    1100.00
 
 Cantidad de items:    3
-___________________________________________________________________________
+________________________________________________________________________________________
 
 Cod.Rubro: R0003                Nombre Rubro: Almacen y Golosinas           
-Cod.Articulo      Descripcion                                                     Pre.Unit.
+Cod.Articulo    Descripcion                                                    Pre.Unit.
 A000302         Fideos Tallarines 500g                                      $     750.00
 A000301         Galletitas Chocolate 250g                                   $     980.00
 
 Cantidad de items:    2
-___________________________________________________________________________
+________________________________________________________________________________________
 
 Cod.Rubro: R0004                Nombre Rubro: Limpieza e Higiene            
-Cod.Articulo      Descripcion                                                     Pre.Unit.
+Cod.Articulo    Descripcion                                                    Pre.Unit.
 A000401         Detergente Lavavajillas 500ml                               $    1450.00
 A000402         Jabon en Polvo 800g                                         $    3100.00
 
 Cantidad de items:    2
-___________________________________________________________________________
+________________________________________________________________________________________
 
 Cod.Rubro: R0005                Nombre Rubro: Carniceria y Fiambreria       
-Cod.Articulo      Descripcion                                                     Pre.Unit.
+Cod.Articulo    Descripcion                                                    Pre.Unit.
 A000502         Asado de Tira 1kg                                           $    8900.00
 A000501         Jamon Cocido 100g                                           $    1800.00
 
 Cantidad de items:    2
-___________________________________________________________________________
+________________________________________________________________________________________
 
 Codigo de Rubro con mayor cantidad de items: R0001

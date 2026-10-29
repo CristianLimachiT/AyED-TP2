@@ -205,7 +205,8 @@ string replicate(char car, short n) {
     return cad;
 }
 
-// Obtiene la fecha del sistema en formato YYYYMMDD y desglose
+// Obtiene la fecha del sistema en formato YYYYMMDD
+// Como se usa un puntero usamos el -> para indicar "."
 long GetDate(int &year, int &mes, int &dia, int &ds) {
     time_t t = time(NULL);
     tm *fec = localtime(&t);
@@ -217,7 +218,9 @@ long GetDate(int &year, int &mes, int &dia, int &ds) {
 }
 
 // Emisión del informe final hacia ListadoRubrosArticulos.Lst
-void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &ListaRubros) {
+void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, 
+    tListaRub &ListaRubros) 
+    {
     sRubro    rRub;
     sArticulo rArt;
     tInfoArt  rInfoA;
@@ -234,8 +237,8 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &Li
     // Encabezado del reporte
     cout << "Fecha : " << setfill('0') << setw(2) << dia << "-"
          << setw(2) << mes << "-" << setw(4) << year << setfill(' ') << endl;
-    cout << "Listado por Rubros y Articulos" << endl;
-    cout << replicate('_', 75) << endl << endl;
+    cout << setw(60) << "Listado por Rubros y Articulos" << endl;
+    cout << replicate('_', 88) << endl << endl;
 
     // 2do acceso secuencial a Rubros.Dat
     Rubros.clear();
@@ -245,9 +248,12 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &Li
     while (!Rubros.eof()) {
         cantItemsRub = 0;
 
-        cout << "Cod.Rubro: " << left << setw(5) << rRub.codRub << "                "
+        cout << "Cod.Rubro: " << left << setw(5) << rRub.codRub 
+             << "                "
              << "Nombre Rubro: " << setw(30) << rRub.descrip << right << endl;
-        cout << "Cod.Articulo      Descripcion                                                     Pre.Unit." << endl;
+        cout << "Cod.Articulo    Descripcion";
+        cout << "                                                    Pre.Unit."
+             << endl;
 
         tListaRub pNodoRub = BuscarNodoClvOrd(ListaRubros, rRub.codRub);
 
@@ -263,7 +269,8 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &Li
 
                 cout << left << setw(16) << rArt.codArt
                      << setw(60) << rArt.descrip
-                     << "$ " << right << setw(10) << fixed << setprecision(2) << rArt.preUni << endl;
+                     << "$ " << right << setw(10) << fixed << setprecision(2) 
+                     << rArt.preUni << endl;
 
                 cantItemsRub++;
                 pSubAct = pSubAct->sgte;
@@ -272,7 +279,7 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &Li
 
         cout << endl;
         cout << "Cantidad de items: " << setw(4) << cantItemsRub << endl;
-        cout << replicate('_', 75) << endl << endl;
+        cout << replicate('_', 88) << endl << endl;
 
         if (cantItemsRub > maxItems) {
             maxItems = cantItemsRub;
@@ -282,7 +289,8 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, tListaRub &Li
         Rubros.read((char *)&rRub, sizeof(sRubro));
     }
 
-    cout << "Codigo de Rubro con mayor cantidad de items: " << codRubMax << endl;
+    cout << "Codigo de Rubro con mayor cantidad de items: " 
+         << codRubMax << endl;
 
     // Restauración de la consola
     freopen("CON", "w", stdout);
