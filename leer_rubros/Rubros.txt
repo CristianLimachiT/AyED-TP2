@@ -1,0 +1,5 @@
+R0001 Lacteos y Quesos
+R0002 Bebidas y Jugos
+R0003 Almacen y Golosinas
+R0004 Limpieza e Higiene
+R0005 Carniceria y Fiambreria

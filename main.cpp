@@ -220,10 +220,9 @@ long GetDate(int &year, int &mes, int &dia, int &ds) {
 // Emisión del informe final hacia ListadoRubrosArticulos.Lst
 void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos, 
     tListaRub &ListaRubros) 
-    {
+{
     sRubro    rRub;
     sArticulo rArt;
-    tInfoArt  rInfoA;
     int       year, mes, dia, ds;
     short     cantItemsRub;
     short     maxItems = -1;
@@ -246,6 +245,8 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos,
 
     Rubros.read((char *)&rRub, sizeof(sRubro));
     while (!Rubros.eof()) {
+        tInfoRub info;
+        SacarPrimerNodoRub(ListaRubros, info);
         cantItemsRub = 0;
 
         cout << "Cod.Rubro: " << left << setw(5) << rRub.codRub 
@@ -255,26 +256,22 @@ void ListadoRubrosArticulos(ifstream &Rubros, ifstream &Articulos,
         cout << "                                                    Pre.Unit."
              << endl;
 
-        tListaRub pNodoRub = BuscarNodoClvOrd(ListaRubros, rRub.codRub);
+        tSubListaArt pSubAct = info.pSubLista;
+        while (pSubAct) {
+            tInfoArt rInfoA;
+            SacarPrimerNodoArt(pSubAct, rInfoA);
 
-        if (pNodoRub && pNodoRub->info.pSubLista) {
-            tSubListaArt pSubAct = pNodoRub->info.pSubLista;
-            while (pSubAct) {
-                rInfoA = pSubAct->info;
+            // Acceso al azar a Articulos.Dat utilizando refArt
+            Articulos.clear();
+            Articulos.seekg(rInfoA.refArt, ios::beg);
+            Articulos.read((char *)&rArt, sizeof(sArticulo));
 
-                // Acceso al azar a Articulos.Dat utilizando refArt
-                Articulos.clear();
-                Articulos.seekg(rInfoA.refArt, ios::beg);
-                Articulos.read((char *)&rArt, sizeof(sArticulo));
+            cout << left << setw(16) << rArt.codArt
+                 << setw(60) << rArt.descrip
+                 << "$ " << right << setw(10) << fixed << setprecision(2) 
+                 << rArt.preUni << endl;
 
-                cout << left << setw(16) << rArt.codArt
-                     << setw(60) << rArt.descrip
-                     << "$ " << right << setw(10) << fixed << setprecision(2) 
-                     << rArt.preUni << endl;
-
-                cantItemsRub++;
-                pSubAct = pSubAct->sgte;
-            }
+            cantItemsRub++;
         }
 
         cout << endl;
